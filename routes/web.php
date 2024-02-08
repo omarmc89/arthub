@@ -10,6 +10,7 @@ use App\Http\Controllers\ArtworkViewController;
 use App\Http\Controllers\PaintingViewController;
 use App\Models\Artwork;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -24,14 +25,13 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    $artworks = Artwork::get();
+    // $artworks = Artwork::get();
+    $artworks = Artwork::with('artist.user')->get();
 
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-        'artworks' => $artworks
+        'artworks' => $artworks,
     ]);
 });
 

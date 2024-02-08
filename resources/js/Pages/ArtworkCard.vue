@@ -2,7 +2,6 @@
 
 defineProps({
     artworks: Object,
-    user: Object,
 });
 
 </script>
@@ -13,10 +12,11 @@ defineProps({
     <article v-for="artwork in artworks" :key="artwork.id" class="card">
       <div class="image-container">
         <img :src="artwork.image_url" :alt="artwork.title" />
+        <p> {{ artwork.artist.user.name }}</p>
       </div>
-      <div class="p-5 text-center">
-          <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ artwork.title }}</h5>
-          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ artwork.description }}</p>
+      <div class="text-card p-1 text-center">
+          <h5 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ artwork.title }}</h5>
+          <p class="font-normal text-gray-700">{{ artwork.description }}</p>
       </div>
     </article>
   </section>
@@ -34,8 +34,12 @@ defineProps({
 .container .card{
   width: 100%;
   height: auto;
-  margin-bottom: 32px;
+  margin-bottom: 50px;
   border-radius: 10px;
+}
+
+.image-container {
+  position:relative;
 }
 
 .image-container img {
@@ -44,5 +48,22 @@ defineProps({
   object-fit: fill;
   object-position: center;
   border-radius: 10px;
+}
+
+.image-container p {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.text-card {
+  border-bottom: 1px solid #00000055;
+
 }
 </style>
