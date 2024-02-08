@@ -22,9 +22,14 @@ class PhotoViewController extends Controller
      */
     public function index()
     {
-        
-        $test = User::find(1)->artist()->first();
-        Debugbar::info($test);
+        $artworkId = 1;
+      // $usersWithArtistsAndArtworks = User::select('users.*')
+      // ->join('artists', 'artists.id', '=', 'users.id')
+      // ->join('artworks', 'artists.id', '=', 'artworks.artist_id')
+      // ->where('artworks.id', '=', $artworkId)
+      // ->first();
+      $artwork = Artwork::with('artist.user')->get();
+        Debugbar::info($artwork);
         return Inertia::render('Artworks/Prueba');
         
     }

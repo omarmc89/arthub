@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="120mm"
+   viewBox="0 0 210 120"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient27">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop28" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="1"
+         id="stop29" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient25">
+      <stop
+         style="stop-color:#e6e6e6;stop-opacity:1;"
+         offset="0"
+         id="stop26" />
+      <stop
+         style="stop-color:#de57ff;stop-opacity:1;"
+         offset="1"
+         id="stop27" />
+    </linearGradient>
+    <rect
+       x="157.09904"
+       y="498.15167"
+       width="514.2644"
+       height="290.02902"
+       id="rect2" />
+    <rect
+       x="30.882719"
+       y="161.12723"
+       width="738.49982"
+       height="545.14709"
+       id="rect1" />
+    <radialGradient
+       xlink:href="#linearGradient25"
+       id="radialGradient27"
+       cx="103.03886"
+       cy="87.260986"
+       fx="103.03886"
+       fy="87.260986"
+       r="52.297108"
+       gradientTransform="matrix(1,0,0,0.43387145,0,49.400936)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       xlink:href="#linearGradient27"
+       id="radialGradient29"
+       cx="103.03886"
+       cy="87.260986"
+       fx="103.03886"
+       fy="87.260986"
+       r="52.097107"
+       gradientTransform="matrix(1,0,0,0.43169809,0,49.590586)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:89.9447px;font-family:'FiraCode Nerd Font';-inkscape-font-specification:'FiraCode Nerd Font Bold';fill:#fc9797;fill-opacity:1;stroke:#bc1e3b;stroke-width:4.92911;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:30.8;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       x="19.777185"
+       y="113.25512"
+       id="text4"
+       transform="matrix(1.0064289,0.00163424,-0.0016553,0.99360948,0,0)"><tspan
+         id="tspan4"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'FiraCode Nerd Font';-inkscape-font-specification:'FiraCode Nerd Font Bold';fill:#fc9797;fill-opacity:1;stroke:#bc1e3b;stroke-width:4.92911;stroke-dasharray:none;stroke-opacity:1"
+         x="19.777185"
+         y="113.25512">HUB</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:98.893px;font-family:'Ink Free';-inkscape-font-specification:'Ink Free';display:inline;fill:#bc1e3b;fill-opacity:1;stroke:#fc9797;stroke-width:2.57844;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:30.8;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       x="11.703956"
+       y="62.113316"
+       id="text3"
+       transform="matrix(1.0075475,0.1170379,-0.11667003,0.97895651,0,0)"><tspan
+         id="tspan3"
+         style="font-size:98.893px;fill:#bc1e3b;fill-opacity:1;stroke:#fc9797;stroke-width:2.57844;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         x="11.703956"
+         y="62.113316">ART</tspan></text>
+  </g>
+</svg>

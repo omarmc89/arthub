@@ -9,6 +9,8 @@ use App\Http\Controllers\OrganiserViewController;
 use App\Http\Controllers\ArtworkViewController;
 use App\Http\Controllers\PaintingViewController;
 use App\Models\Artwork;
+use App\Models\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,7 @@ use App\Models\Artwork;
 
 Route::get('/', function () {
     $artworks = Artwork::get();
+
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
