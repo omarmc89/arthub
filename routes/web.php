@@ -8,6 +8,7 @@ use App\Http\Controllers\ArtistViewController;
 use App\Http\Controllers\OrganiserViewController;
 use App\Http\Controllers\ArtworkViewController;
 use App\Http\Controllers\PaintingViewController;
+use App\Models\Artwork;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +22,13 @@ use App\Http\Controllers\PaintingViewController;
 */
 
 Route::get('/', function () {
+    $artworks = Artwork::get();
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'artworks' => $artworks
     ]);
 });
 
@@ -41,7 +44,7 @@ Route::middleware([
 
 Route::resource('artists', ArtistViewController::class);
 Route::resource('organisers', OrganiserViewController::class);
-Route::resource('artowrks', ArtworkViewController::class);
+Route::resource('artworks', ArtworkViewController::class);
 Route::resource('paintings', PaintingViewController::class);
 Route::resource('photos', PhotoViewController::class);
 Route::resource('prueba', PhotoViewController::class);

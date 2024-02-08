@@ -23,7 +23,7 @@ const submit = () => {
 
 <!-- FORMULARIO PARA ARTISTS-->
 <template>
-      <h1 class="text-2xl text-center font-semibold text-gray-900 dark:text-white">Create a new photo</h1>
+      <h1 class="text-2xl text-center font-semibold text-gray-900">Create a new photo</h1>
         <form @submit.prevent="submit">
           <div>
             <InputLabel for="title" value="Title" />

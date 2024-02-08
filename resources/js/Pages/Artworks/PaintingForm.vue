@@ -7,7 +7,7 @@ import TextInput from '@/Components/TextInput.vue';
 
 const paintingForm = useForm({
   title:'',
-  desciption:'',
+  description:'',
   image_url:'',
   style:'',
   width:'',
@@ -15,7 +15,7 @@ const paintingForm = useForm({
 })
 
 const submit = () => {
-  paintingForm.post('/photos', {
+  paintingForm.post('/paintings', {
     preserveScroll: true,
     onSuccess: () => paintingForm.reset()
   })
@@ -25,10 +25,10 @@ const submit = () => {
 
 <!-- FORMULARIO PARA PAINTINGS-->
 <template>
-  <h1 class="text-2xl text-center font-semibold text-gray-900 dark:text-white">Create a new painting</h1>
-  <form @submit.prevent="paintingForm.post('/paintings')">
+  <h1 class="text-2xl text-center font-semibold text-gray-900">Create a new painting</h1>
+  <form @submit.prevent="submit">
     <div>
-      <InputLabel for="title" value="title" />
+      <InputLabel for="title" value="Title" />
       <TextInput
           id="title"
           v-model="paintingForm.title"
@@ -42,7 +42,7 @@ const submit = () => {
     </div>
 
     <div class="mt-4">
-      <InputLabel for="description" value="description" />
+      <InputLabel for="description" value="Description" />
       <TextInput
           id="description"
           v-model="paintingForm.description"
@@ -56,7 +56,7 @@ const submit = () => {
     </div>
 
     <div class="mt-4">
-      <InputLabel for="image_url" value="Email" />
+      <InputLabel for="image_url" value="Url Image" />
       <TextInput
           id="image_url"
           v-model="paintingForm.image_url"
@@ -69,7 +69,7 @@ const submit = () => {
     </div>
 
     <div class="mt-4">
-      <InputLabel for="style" value="style" />
+      <InputLabel for="style" value="Style" />
       <TextInput
           id="style"
           v-model="paintingForm.style"
@@ -81,7 +81,7 @@ const submit = () => {
       <InputError class="mt-2" :message="paintingForm.errors.style" />
     </div>
     <div class="mt-4">
-      <InputLabel for="width" value="width" />
+      <InputLabel for="width" value="Width" />
       <TextInput
           id="width"
           v-model="paintingForm.width"
@@ -94,7 +94,7 @@ const submit = () => {
       <InputError class="mt-2" :message="paintingForm.errors.width" />
     </div>
     <div class="mt-4">
-      <InputLabel for="height" value="height" />
+      <InputLabel for="height" value="Height" />
       <TextInput
           id="height"
           v-model="paintingForm.height"

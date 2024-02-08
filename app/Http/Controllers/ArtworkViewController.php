@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artwork;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ArtworkViewController extends Controller
 {
@@ -12,7 +13,7 @@ class ArtworkViewController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('ArtworkCard',['artworks' => Artwork::get()]);
     }
 
     /**

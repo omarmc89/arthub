@@ -5,3 +5,10 @@
 [x-cloak] {
     display: none;
 }
+
+
+html, body {
+    height: 100%;
+    margin: 0; /* Asegúrate de eliminar los márgenes predeterminados */
+    padding: 0; /* Asegúrate de eliminar el relleno predeterminado */
+}
