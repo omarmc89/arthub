@@ -4,6 +4,8 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import { ref } from 'vue';
+import ModalComponent from '@/Components/DialogModal.vue';
 
 
 const photoForm = useForm({
@@ -13,12 +15,21 @@ const photoForm = useForm({
   style:''
 })
 
+const showModal = ref(false);
+
 const submit = () => {
   photoForm.post('/photos', {
     preserveScroll: true,
-    onSuccess: () => photoForm.reset()
+    onSuccess: () => {
+      showModal.value = true;
+      photoForm.reset();
+    }
   })
 }
+
+const handleModalClose = () => {
+  showModal.value = false;
+};
 </script>
 
 <!-- FORMULARIO PARA ARTISTS-->
@@ -87,4 +98,16 @@ const submit = () => {
             </PrimaryButton>
           </div>
         </form>
+
+        <ModalComponent :show="showModal" @close="handleModalClose">
+    <template #title>
+      Success 👍
+    </template>
+    <template #content>
+      Your photo has been uploaded successfully!
+    </template>
+    <template #footer>
+      <PrimaryButton @click="handleModalClose">Close</PrimaryButton>
+    </template>
+  </ModalComponent>
 </template>

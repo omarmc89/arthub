@@ -1,9 +1,11 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3';
+import { ref } from 'vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import ModalComponent from '@/Components/DialogModal.vue';
 
 const paintingForm = useForm({
   title:'',
@@ -14,12 +16,23 @@ const paintingForm = useForm({
   height:'',
 })
 
+const showModal = ref(false);
+
 const submit = () => {
   paintingForm.post('/paintings', {
     preserveScroll: true,
-    onSuccess: () => paintingForm.reset()
+    onSuccess: () => {
+      showModal.value = true;
+      paintingForm.reset();
+    }
   })
 }
+
+const handleModalClose = () => {
+  showModal.value = false;
+};
+
+console.log(showModal.value)
 
 </script>
 
@@ -116,4 +129,17 @@ const submit = () => {
       </PrimaryButton>
     </div>
   </form>
+
+  <ModalComponent :show="showModal" @close="handleModalClose">
+    <template #title>
+      Success 👍
+    </template>
+    <template #content>
+      Your painting has been uploaded successfully!
+    </template>
+    <template #footer>
+      <PrimaryButton @click="handleModalClose">Close</PrimaryButton>
+    </template>
+  </ModalComponent>
+
 </template>

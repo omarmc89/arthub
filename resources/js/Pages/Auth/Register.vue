@@ -6,7 +6,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import Header from '@/Components/Header.vue';
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 
 const artistForm = useForm({
       name:'',
@@ -42,20 +42,24 @@ const artistForm = useForm({
 
 <template>
   <Head title="Register" />
-    <Header />
+  <div class="bg-gray-100 pt-10 flex flex-col items-center justify-center">
+    <Link :href="route('dashboard')">
+      <ApplicationLogo width="200"/>
+    </Link>
+  </div>
     <AuthenticationCard>
       <template #logo>
         <div>
             <h2 class="text-xl text-center font-bold tracking-wide uppercase">Select type of user:</h2>
         </div>
-        <section class="flex flex-row justify-center items-center p-4 bg-gray-100 dark:bg-gray-900">
-          <button :disabled="artist" :class="{active:artist}" @click="artistFormHidden(artist)" class="button relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-            <span class="text-lg tracking-wide relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+        <section class="flex flex-row justify-center items-center p-4 bg-gray-100">
+          <button :disabled="artist" :class="{active:artist}" @click="artistFormHidden(artist)" class="button relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
+            <span class="text-lg tracking-wide relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0">
               Artist
             </span>
           </button>
-          <button :disabled="organiser" @click="organiserFormHidden(organiser)" class="button relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-            <span class="text-lg tracking-wide relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+          <button :disabled="organiser" @click="organiserFormHidden(organiser)" class="button relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
+            <span class="text-lg tracking-wide relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0">
               Organiser
             </span>
           </button>
@@ -133,7 +137,7 @@ const artistForm = useForm({
             <InputError class="mt-2" :message="artistForm.errors.confirmPassword" />
           </div>
           <div class="flex items-center justify-end mt-4">
-            <Link :href="route('login')" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
+            <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Already registered?
             </Link>
 
@@ -227,7 +231,7 @@ const artistForm = useForm({
           </div>
 
           <div class="flex items-center justify-end mt-4">
-            <Link :href="route('login')" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
+            <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Already registered?
             </Link>
 

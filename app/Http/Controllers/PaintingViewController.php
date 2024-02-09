@@ -34,11 +34,8 @@ class PaintingViewController extends Controller
      */
     public function store(Request $request)
     {
-      $user_id = Auth::user()->id;
-      $artistId = Artist::select('artists.id')
-      ->join('roles', 'artists.role_id', '=', 'roles.id')
-      ->join('users', 'roles.id', '=', 'users.role_id')
-      ->first()->id;
+      $userId = Auth::user()->id;
+      $artistId = User::find($userId)->artist()->first()->id;
 
       $artwork = new Artwork();
       $artwork->title = $request->title;

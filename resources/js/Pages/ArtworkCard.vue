@@ -15,7 +15,7 @@ defineProps({
         <p> {{ artwork.artist.user.name }}</p>
       </div>
       <div class="text-card p-1 text-center">
-          <h5 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ artwork.title }}</h5>
+          <h5 class="text-xl font-bold tracking-tight text-gray-900">{{ artwork.title }}</h5>
           <p class="font-normal text-gray-700">{{ artwork.description }}</p>
       </div>
     </article>
@@ -36,6 +36,7 @@ defineProps({
   height: auto;
   margin-bottom: 50px;
   border-radius: 10px;
+  break-inside: avoid;
 }
 
 .image-container {
