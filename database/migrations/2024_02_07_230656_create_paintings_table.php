@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('style');
             $table->integer('width');
             $table->integer('height');
-            $table->foreignId('artwork_id')->constrained('artworks');
+            $table->foreignId('artwork_id')->constrained('artworks')->onDelete('cascade');
             $table->timestamps();
         });
     }

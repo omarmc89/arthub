@@ -43,6 +43,20 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    Route::get('/mainPage', function () {
+      $controller = new ArtworkViewController();
+      $artworks = $controller->listArtworks(); 
+      return Inertia::render('MainPageLogged', [
+        'artworks' => $artworks,
+      ]);
+    })->name('mainPage');
+    Route::get('/artworks/{id}', [ArtworkViewController::class, 'artworkIndex'])->name('artworkIndex');
+    Route::get('/artworks/{id}/edit', [ArtworkViewController::class, 'edit'])->name('artworkEdit');
+    Route::get('/userArtworks', [ArtworkViewController::class, 'userArtworks'])->name('userArtworks');
+    Route::delete('/artworks/{id}', [ArtworkViewController::class, 'destroy']);
+    Route::put('/photos/{photo}', [PhotoViewController::class, 'update']);
+    Route::put('/paintings/{painting}', [PaintingViewController::class, 'update']);
+    Route::get('/artistsList', [ArtistViewController::class, 'artistList'])->name('artists');
 });
 
 Route::resource('artists', ArtistViewController::class);

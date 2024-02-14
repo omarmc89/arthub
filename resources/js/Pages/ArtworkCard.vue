@@ -1,34 +1,36 @@
 <script setup>
+import  { defineProps } from 'vue';
+import { Link } from '@inertiajs/vue3';
 
 defineProps({
     artworks: Object,
 });
 
+
 </script>
 
 <template>
-
   <section class="container">
     <article v-for="artwork in artworks" :key="artwork.id" class="card">
-      <div class="image-container">
-        <img :src="artwork.image_url" :alt="artwork.title" />
-        <p> {{ artwork.artist.user.name }}</p>
-      </div>
+        <Link class="image-container" :href="'/artworks/' + artwork.id">
+          <img :src="artwork.image_url" :alt="artwork.title" />
+          <p> {{ artwork.artist.user.name }}</p>
+        </Link>
       <div class="text-card p-1 text-center">
           <h5 class="text-xl font-bold tracking-tight text-gray-900">{{ artwork.title }}</h5>
           <p class="font-normal text-gray-700">{{ artwork.description }}</p>
       </div>
     </article>
   </section>
+
 </template>
 
 <style>
 
 .container {
-  columns: 2;
+  columns:2;
   padding: 16px 32px;
-  column-gap: 32px;
-  
+  column-gap: 32px; 
 }
 
 .container .card{

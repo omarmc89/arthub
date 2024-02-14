@@ -19,11 +19,11 @@ class Artwork extends Model
 
     public function photo()
     {
-        return $this->belongsTo(Photo::class, 'role_id', 'id');
+        return $this->hasOne(Photo::class);
     }
 
     public function painting()
     {
-        return $this->belongsTo(Painting::class, 'role_id', 'id');
+        return $this->hasOne(Painting::class);
     }
 }

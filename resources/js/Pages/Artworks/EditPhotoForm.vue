@@ -19,7 +19,7 @@ const props = defineProps({
 })
 
 
-const photoForm = useForm({
+const editPhotoForm = useForm({
   title: props.initialValues && props.initialValues.title ? props.initialValues.title : '',
   description: props.initialValues && props.initialValues.description ? props.initialValues.description : '',
   image_url: props.initialValues && props.initialValues.image_url ? props.initialValues.image_url : '',
@@ -29,7 +29,7 @@ const photoForm = useForm({
 const showModal = ref(false);
 
 const submit = () => {
-  photoForm.post(props.submitUrl, {
+  editPhotoForm.put(props.submitUrl, {
     preserveScroll: true,
     onSuccess: () => {
       showModal.value = true;
@@ -45,67 +45,67 @@ const handleModalClose = () => {
 
 <!-- FORMULARIO PARA ARTISTS-->
 <template>
-<h1 class="text-2xl text-center font-semibold text-gray-900">Create a new photo</h1>
+<h1 class="text-2xl text-center font-semibold text-gray-900">Update photo</h1>
   <form @submit.prevent="submit">
     <div>
       <InputLabel for="title" value="Title" />
       <TextInput
           id="title"
-          v-model="photoForm.title"
+          v-model="editPhotoForm.title"
           type="text"
           class="mt-1 block w-full"
           required
           autofocus
           autocomplete="title"
       />
-      <InputError class="mt-2" :message="photoForm.errors.title" />
+      <InputError class="mt-2" :message="editPhotoForm.errors.title" />
     </div>
 
     <div class="mt-4">
       <InputLabel for="description" value="Description" />
       <TextInput
           id="description"
-          v-model="photoForm.description"
+          v-model="editPhotoForm.description"
           type="text"
           class="mt-1 block w-full"
           required
           autofocus
           autocomplete="description"
       />
-      <InputError class="mt-2" :message="photoForm.errors.description" />
+      <InputError class="mt-2" :message="editPhotoForm.errors.description" />
     </div>
 
     <div class="mt-4">
       <InputLabel for="image_url" value="Url image" />
       <TextInput
           id="image_url"
-          v-model="photoForm.image_url"
+          v-model="editPhotoForm.image_url"
           type="text"
           class="mt-1 block w-full"
           required
           autocomplete="username"
       />
-      <InputError class="mt-2" :message="photoForm.errors.image_url" />
+      <InputError class="mt-2" :message="editPhotoForm.errors.image_url" />
     </div>
 
     <div class="mt-4">
       <InputLabel for="style" value="Style" />
       <TextInput
           id="style"
-          v-model="photoForm.style"
+          v-model="editPhotoForm.style"
           type="text"
           class="mt-1 block w-full"
           required
           autocomplete="new-style"
       />
-      <InputError class="mt-2" :message="photoForm.errors.style" />
+      <InputError class="mt-2" :message="editPhotoForm.errors.style" />
     </div>
     <div class="flex items-center justify-end mt-4">
-      <PrimaryButton v-if="photoForm.processing" :class="{ 'opacity-25': photoForm.processing }" :disabled="photoForm.processing">
+      <PrimaryButton v-if="editPhotoForm.processing" :class="{ 'opacity-25': editPhotoForm.processing }" :disabled="editPhotoForm.processing">
           Uploading...
       </PrimaryButton>
       <PrimaryButton v-else>
-          Create Photo
+          Update Photo
       </PrimaryButton>
     </div>
   </form>

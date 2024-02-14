@@ -14,6 +14,6 @@ class Painting extends Model
     public $timestamps = true;
 
     public function artwork() {
-        return $this->hasOne(Artwork::class);
+        return $this->belongsTo(Artwork::class);
     }
 }

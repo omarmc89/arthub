@@ -76,7 +76,15 @@ class PaintingViewController extends Controller
      */
     public function update(Request $request, Painting $painting)
     {
-        //
+      $artwork = Artwork::find($painting->artwork_id);
+      $artwork->title = $request->title;
+      $artwork->description = $request->description;
+      $artwork->image_url = $request->image_url;
+      $artwork->save();
+      $painting->style = $request->style;
+      $painting->save();
+
+      return redirect()->route('userArtworks');
     }
 
     /**

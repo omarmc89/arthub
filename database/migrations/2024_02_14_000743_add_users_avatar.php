@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('artists', function (Blueprint $table) {
-          $table->id();
-          $table->string('nickname');
-          $table->foreignId('role_id')->constrained('roles')->onDelete('cascade');
-          $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('avatar')->nullable();
         });
     }
 
@@ -24,6 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('artists');
+        Schema::table('users', function (Blueprint $table) {
+            //
+            $table->dropColumn('avatar');
+        });
     }
 };

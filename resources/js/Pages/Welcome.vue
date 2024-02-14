@@ -13,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-    <Head title="ArtHUB" />
+    <Head title="Home" />
 
     <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 selection:bg-red-500 selection:text-white">
         <div v-if="canLogin" class="user sm:fixed sm:top-1 sm:end-0 p-2 text-end z-10">

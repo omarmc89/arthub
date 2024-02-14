@@ -22,14 +22,13 @@ class PhotoViewController extends Controller
      */
     public function index()
     {
-        $artworkId = 1;
+
       // $usersWithArtistsAndArtworks = User::select('users.*')
       // ->join('artists', 'artists.id', '=', 'users.id')
       // ->join('artworks', 'artists.id', '=', 'artworks.artist_id')
       // ->where('artworks.id', '=', $artworkId)
       // ->first();
       $artwork = Artwork::with('artist.user')->get();
-        Debugbar::info($artwork);
         return Inertia::render('Artworks/Prueba');
         
     }
@@ -84,7 +83,15 @@ class PhotoViewController extends Controller
      */
     public function update(Request $request, Photo $photo)
     {
-        //
+      $artwork = Artwork::find($photo->artwork_id);
+      $artwork->title = $request->title;
+      $artwork->description = $request->description;
+      $artwork->image_url = $request->image_url;
+      $artwork->save();
+      $photo->style = $request->style;
+      $photo->save();
+
+      return redirect()->route('userArtworks');
     }
 
     /**

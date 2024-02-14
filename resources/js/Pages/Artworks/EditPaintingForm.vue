@@ -19,7 +19,7 @@ const props = defineProps({
 
 })
 
-const paintingForm = useForm({
+const editPaintingForm = useForm({
   title:props.initialValues && props.initialValues.title ? props.initialValues.title : '',
   description:props.initialValues && props.initialValues.description ? props.initialValues.description : '',
   image_url:props.initialValues && props.initialValues.image_url ? props.initialValues.image_url : '',
@@ -31,11 +31,11 @@ const paintingForm = useForm({
 const showModal = ref(false);
 
 const submit = () => {
-  paintingForm.post(props.submitUrl, {
+  editPaintingForm.put(props.submitUrl, {
     preserveScroll: true,
     onSuccess: () => {
       showModal.value = true;
-      paintingForm.reset();
+      editPaintingForm.reset();
     }
   })
 }
@@ -54,84 +54,84 @@ const handleModalClose = () => {
       <InputLabel for="title" value="Title" />
       <TextInput
           id="title"
-          v-model="paintingForm.title"
+          v-model="editPaintingForm.title"
           type="text"
           class="mt-1 block w-full"
           required
           autofocus
           autocomplete="title"
       />
-      <InputError class="mt-2" :message="paintingForm.errors.title" />
+      <InputError class="mt-2" :message="editPaintingForm.errors.title" />
     </div>
 
     <div class="mt-4">
       <InputLabel for="description" value="Description" />
       <TextInput
           id="description"
-          v-model="paintingForm.description"
+          v-model="editPaintingForm.description"
           type="text"
           class="mt-1 block w-full"
           required
           autofocus
           autocomplete="description"
       />
-      <InputError class="mt-2" :message="paintingForm.errors.description" />
+      <InputError class="mt-2" :message="editPaintingForm.errors.description" />
     </div>
 
     <div class="mt-4">
       <InputLabel for="image_url" value="Url Image" />
       <TextInput
           id="image_url"
-          v-model="paintingForm.image_url"
+          v-model="editPaintingForm.image_url"
           type="text"
           class="mt-1 block w-full"
           required
           autocomplete="username"
       />
-      <InputError class="mt-2" :message="paintingForm.errors.image_url" />
+      <InputError class="mt-2" :message="editPaintingForm.errors.image_url" />
     </div>
 
     <div class="mt-4">
       <InputLabel for="style" value="Style" />
       <TextInput
           id="style"
-          v-model="paintingForm.style"
+          v-model="editPaintingForm.style"
           type="text"
           class="mt-1 block w-full"
           required
           autocomplete="new-style"
       />
-      <InputError class="mt-2" :message="paintingForm.errors.style" />
+      <InputError class="mt-2" :message="editPaintingForm.errors.style" />
     </div>
     <div class="mt-4">
       <InputLabel for="width" value="Width" />
       <TextInput
           id="width"
-          v-model="paintingForm.width"
+          v-model="editPaintingForm.width"
           type="number"
           class="mt-1 block w-full"
           required
           autofocus
           autocomplete="width"
       />
-      <InputError class="mt-2" :message="paintingForm.errors.width" />
+      <InputError class="mt-2" :message="editPaintingForm.errors.width" />
     </div>
     <div class="mt-4">
       <InputLabel for="height" value="Height" />
       <TextInput
           id="height"
-          v-model="paintingForm.height"
+          v-model="editPaintingForm.height"
           type="number"
           class="mt-1 block w-full"
           required
           autofocus
           autocomplete="height"
       />
-      <InputError class="mt-2" :message="paintingForm.errors.height" />
+      <InputError class="mt-2" :message="editPaintingForm.errors.height" />
     </div>
 
     <div class="flex items-center justify-end mt-4">
-      <PrimaryButton v-if="paintingForm.processing" :class="{ 'opacity-25': paintingForm.processing }" :disabled="paintingForm.processing">
+      <PrimaryButton v-if="editPaintingForm.processing" :class="{ 'opacity-25': editPaintingForm.processing }" :disabled="editPaintingForm.processing">
           Uploading...
       </PrimaryButton>
       <PrimaryButton v-else>

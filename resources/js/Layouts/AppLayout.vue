@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref} from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Banner from '@/Components/Banner.vue';
@@ -7,6 +7,8 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import Footer from'@/Components/Footer.vue';
+
 
 defineProps({
     title: String,
@@ -14,17 +16,10 @@ defineProps({
 
 const showingNavigationDropdown = ref(false);
 
-const switchToTeam = (team) => {
-    router.put(route('current-team.update'), {
-        team_id: team.id,
-    }, {
-        preserveState: false,
-    });
-};
-
 const logout = () => {
     router.post(route('logout'));
 };
+
 </script>
 
 <template>
@@ -48,11 +43,17 @@ const logout = () => {
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                              <NavLink :href="'/'" :active="route().current('/')">
-                                    Home
+                              <NavLink :href="'/mainPage'" :active="route().current('mainPage')">
+                                    Main Page
+                                </NavLink>
+                                <NavLink :href="route('userArtworks')" :active="route().current('userArtworks')">
+                                    My Artworks
                                 </NavLink>
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                    Upload artworks
+                                </NavLink>
+                                <NavLink :href="route('artists')" :active="route().current('artists')">
+                                    Artists
                                 </NavLink>
                             </div>
                         </div>
@@ -136,12 +137,18 @@ const logout = () => {
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
-                        </ResponsiveNavLink>
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Home
-                        </ResponsiveNavLink>
+                      <ResponsiveNavLink :href="route('mainPage')" :active="route().current('mainPage')">
+                          Main Page
+                      </ResponsiveNavLink>
+                      <ResponsiveNavLink :href="route('userArtworks')" :active="route().current('userArtworks')">
+                        My Artworks
+                      </ResponsiveNavLink>
+                      <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                          Upload artworks
+                      </ResponsiveNavLink>
+                      <ResponsiveNavLink :href="route('artists')" :active="route().current('artists')">
+                          Artists
+                      </ResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
@@ -192,6 +199,8 @@ const logout = () => {
             <main>
                 <slot />
             </main>
+            <Footer />
+          </div>
         </div>
-    </div>
 </template>
+

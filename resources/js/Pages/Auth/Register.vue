@@ -11,6 +11,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 const artistForm = useForm({
       name:'',
       email:'',
+      avatar:'',
       password: '',
       confirmPassword:'',
       nickname:''
@@ -19,6 +20,7 @@ const artistForm = useForm({
   const organiserForm = useForm({
       name:'',
       email:'',
+      avatar:'',
       password: '',
       location:'',
       confirmPassword:'',
@@ -96,6 +98,20 @@ const artistForm = useForm({
                 autocomplete="nickname"
             />
             <InputError class="mt-2" :message="artistForm.errors.nickname" />
+          </div>
+
+          <div class="mt-4">
+            <InputLabel for="avatar" value="Avatar" />
+            <TextInput
+                id="avatar"
+                v-model="artistForm.avatar"
+                type="text"
+                class="mt-1 block w-full"
+                required
+                autofocus
+                autocomplete="avatar"
+            />
+            <InputError class="mt-2" :message="artistForm.errors.avatar" />
           </div>
 
           <div class="mt-4">

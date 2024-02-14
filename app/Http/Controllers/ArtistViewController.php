@@ -8,6 +8,7 @@ use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Inertia\Inertia;
 
 use Debugbar;
 
@@ -17,9 +18,12 @@ class ArtistViewController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function artistList()
     {
-        //
+        $artists = Artist::with('user')->get();
+        return Inertia::render('Artists', [
+            'artists' => $artists,
+        ]);
     }
 
     /**
@@ -50,6 +54,7 @@ class ArtistViewController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->role_id = $roleId;
+        $user->avatar = $request->avatar;
         $user->save();
 
         $userId = User::where('email', '=', $request->email)->first()->id;
