@@ -48,7 +48,7 @@ const handleModalClose = () => {
 
 <!-- FORMULARIO PARA PAINTINGS-->
 <template>
-  <h1 class="text-2xl text-center font-semibold text-gray-900">Create a new painting</h1>
+  <h1 class="text-2xl text-center font-semibold text-gray-900">Editing painting</h1>
   <form @submit.prevent="submit">
     <div>
       <InputLabel for="title" value="Title" />
@@ -135,7 +135,7 @@ const handleModalClose = () => {
           Uploading...
       </PrimaryButton>
       <PrimaryButton v-else>
-          Create Painting
+          Update
       </PrimaryButton>
     </div>
   </form>
@@ -145,7 +145,7 @@ const handleModalClose = () => {
       Success 👍
     </template>
     <template #content>
-      Your painting has been uploaded successfully!
+      Your painting has been updated successfully!
     </template>
     <template #footer>
       <PrimaryButton @click="handleModalClose">Close</PrimaryButton>

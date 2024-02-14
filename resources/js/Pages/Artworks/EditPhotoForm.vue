@@ -115,7 +115,7 @@ const handleModalClose = () => {
       Success 👍
     </template>
     <template #content>
-      Your photo has been uploaded successfully!
+      Your photo has been updated successfully!
     </template>
     <template #footer>
       <PrimaryButton @click="handleModalClose">Close</PrimaryButton>

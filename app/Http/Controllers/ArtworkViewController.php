@@ -87,13 +87,13 @@ class ArtworkViewController extends Controller
     {
         //
         $artwork = Artwork::with('artist.user', 'photo', 'painting')->findOrFail($id);
-        // if (Auth::user()->name == $artwork->artist->user->name){
-        //   return Inertia::render('ArtworkEdit',['artwork' => $artwork]);
-        // } else {
-        //   return Inertia::render('Errors/403')->toResponse(request())->setStatusCode(403);
-        // }
+        if (Auth::user()->name == $artwork->artist->user->name){
+          return Inertia::render('ArtworkEdit',['artwork' => $artwork]);
+        } else {
+          return Inertia::render('Errors/403')->toResponse(request())->setStatusCode(403);
+        }
 
-        return Inertia::render('ArtworkEdit',['artwork' => $artwork]);
+        // return Inertia::render('ArtworkEdit',['artwork' => $artwork]);
 
 
     }

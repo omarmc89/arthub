@@ -26,11 +26,14 @@ defineProps({
 
 <style>
   .main-artists{
+    min-height: 80vh;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     place-content: center;
-    gap: 100px;
+    column-gap: 90px;
+    row-gap: 50px;
+    margin-top: 50px;
     padding: 20px;
     background-image: url('../../../public/dot.svg');
     background-size: 1.5%;

@@ -24,6 +24,8 @@
 
     img {
       border-radius: 50%;
+      box-shadow: 5px 5px 15px 0 rgba(0,0,0,0.2);
+      border: 3px solid #e9c7c7c7;
     }
     
     div{
@@ -38,6 +40,13 @@
           color: #666;
           text-transform: uppercase;
         }
+      }
+
+      p {
+        background-color: #7c7878c9;
+        padding: 5px 10px;
+        border-radius: 20px;
+        color: rgb(247, 207, 207);
       }
     }
   }
