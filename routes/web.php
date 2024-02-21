@@ -3,14 +3,13 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\Artwork;
 use App\Http\Controllers\PhotoViewController;
 use App\Http\Controllers\ArtistViewController;
 use App\Http\Controllers\OrganiserViewController;
 use App\Http\Controllers\ArtworkViewController;
 use App\Http\Controllers\PaintingViewController;
-use App\Models\Artwork;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserViewController;
 
 
 /*
@@ -43,13 +42,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
-    Route::get('/mainPage', function () {
-      $controller = new ArtworkViewController();
-      $artworks = $controller->listArtworks(); 
-      return Inertia::render('MainPageLogged', [
-        'artworks' => $artworks,
-      ]);
-    })->name('mainPage');
+    Route::get('mainPage', [ArtworkViewController::class, 'listArtworks'])->name('mainPage');
     Route::get('/artworks/{id}', [ArtworkViewController::class, 'artworkIndex'])->name('artworkIndex');
     Route::get('/artworks/{id}/edit', [ArtworkViewController::class, 'edit'])->name('artworkEdit');
     Route::get('/userArtworks', [ArtworkViewController::class, 'userArtworks'])->name('userArtworks');
@@ -57,7 +50,15 @@ Route::middleware([
     Route::put('/photos/{photo}', [PhotoViewController::class, 'update']);
     Route::put('/paintings/{painting}', [PaintingViewController::class, 'update']);
     Route::get('/artistsList', [ArtistViewController::class, 'artistList'])->name('artists');
+    Route::get('/adminUsers', [UserViewController::class, 'adminIndex'])->name('adminUsers');
 });
+
+Route::middleware([
+    'isAdmin',
+])->group(function() {
+    Route::get('/adminUsers', [UserViewController::class, 'adminIndex'])->name('adminUsers');
+});
+
 
 Route::resource('artists', ArtistViewController::class);
 Route::resource('organisers', OrganiserViewController::class);
