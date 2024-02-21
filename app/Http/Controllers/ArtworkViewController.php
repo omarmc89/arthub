@@ -9,14 +9,25 @@ use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+
 class ArtworkViewController extends Controller
 {
 
 
-    public function listArtworks()
+    public function listArtworks(Request $request)
     {
-      $artworks = Artwork::with('artist.user')->get();
-        return $artworks;
+      return Inertia::render('MainPageLogged', [
+        // dd(Artwork::when($request->search, function($query, $search){
+        //   $query->where('description', 'like', '%' . $search . '%');
+        // }))
+        'artworks' => Artwork::with('artist.user')->when($request->term, function($query, $term){
+          $query->where('title', 'like', '%' . $term . '%')
+          ->orWhere('description', 'like', '%' . $term . '%')
+          ->orWhereHas('artist.user', function ($q) use ($term){
+            $q -> where('name', 'like', '%' . $term . '%');
+          });
+        })->get()
+      ]);
     }
 
     public function artworkIndex ($id) {
@@ -25,6 +36,25 @@ class ArtworkViewController extends Controller
         'artwork' => $artwork,
       ]);
     }
+
+    public function liveSearch(Request $request) {
+      $query= $request->get('query');
+      if($query != ''){
+        $data = Artwork::with('artist.user')
+        ->where('title', 'like', '%' . $query . '%')
+        ->orWhere('description', 'like', '%' . $query . '%')
+        ->orWhereHas('artist.user', function ($q) use ($query){
+          $q -> where('name', 'like', '%' . $query . '%');
+        })
+        ->OrderBy('id', 'desc');
+      }
+      else{
+        $data = Artwork::with('artist.user')->get();
+      }
+
+      return $data;
+
+     }
 
     public function index (Request $request) {
       // $artworks = QueryBuilder::for (Artwork::class)

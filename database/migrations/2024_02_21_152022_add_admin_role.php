@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar')->default('https://xsgames.co/randomusers/avatar.php?g=female')->nullable();
+        Schema::table('roles', function (Blueprint $table) {
+            //
+            $table->boolean('is_admin')->default(false);
         });
     }
 
@@ -21,9 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('roles', function (Blueprint $table) {
             //
-            $table->dropColumn('avatar');
+            $table->dropColumn('is_admin');
         });
     }
 };
