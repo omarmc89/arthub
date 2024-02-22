@@ -23,9 +23,12 @@
     align-items: center;
 
     img {
+      max-width: 250px;
       border-radius: 50%;
       box-shadow: 5px 5px 15px 0 rgba(0,0,0,0.2);
       border: 3px solid #e9c7c7c7;
+      object-fit: cover;
+      aspect-ratio: 1/1;
     }
     
     div{

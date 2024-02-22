@@ -19,8 +19,7 @@ class UserViewController extends Controller
 
     public function adminIndex() {
         
-        $users = User::all();
-
+        $users = User::with('artist')->get();
         return Inertia::render('Users/AdminUsers', [
             'users' => $users,
         ]);

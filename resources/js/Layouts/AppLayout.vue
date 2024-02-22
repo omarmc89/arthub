@@ -14,6 +14,12 @@ defineProps({
     title: String,
 });
 
+const adminHover = ref(false);
+
+if (adminHover === true) {
+  target.innerText = 'Admin function'
+}
+
 const showingNavigationDropdown = ref(false);
 
 const logout = () => {
@@ -42,7 +48,7 @@ const logout = () => {
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="navbar hidden space-x-8 sm:-my-px sm:ms-10 sm:flex overflow-hidden flex justify-center items-center w-full">
                               <NavLink :href="'/mainPage'" :active="route().current('mainPage')">
                                     Main Page
                                 </NavLink>
@@ -55,6 +61,13 @@ const logout = () => {
                                 <NavLink :href="route('artists')" :active="route().current('artists')">
                                     Artists
                                 </NavLink>
+                                <NavLink class="text-violet-400 font-bold hover:text-violet-400 hover:text-violet-800" v-if="$page.props.auth.user.role_id=3" :href="route('adminUsers')" :active="route().current('adminUsers')">
+                                    Manage Users
+                                </NavLink>
+                                <NavLink class="text-violet-400 font-bold hover:text-violet-400 hover:text-violet-800" v-if="$page.props.auth.user.role_id=3" :href="route('artists')" :active="route().current('artists')">
+                                    Manage Artworks
+                                </NavLink>
+                                
                             </div>
                         </div>
 
@@ -204,3 +217,21 @@ const logout = () => {
         </div>
 </template>
 
+<style>
+
+.navbar{
+  display: flex;
+  justify-content: center;
+}
+.navbar a {
+  text-align: center;
+  justify-content: center;
+  margin: 0 20px;
+  padding: 0 20px;
+}
+
+.navbar a:active{
+  border-bottom: 2px solid red  !important;;
+}
+
+</style>

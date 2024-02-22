@@ -54,6 +54,7 @@ Route::middleware([
 });
 
 Route::middleware([
+  'auth:sanctum',
     'isAdmin',
 ])->group(function() {
     Route::get('/adminUsers', [UserViewController::class, 'adminIndex'])->name('adminUsers');

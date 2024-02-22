@@ -51,23 +51,23 @@ const handleModalClose = () => {
   <h1 class="text-2xl text-center font-semibold text-gray-900">Create a new painting</h1>
   <form @submit.prevent="submit">
     <div>
-      <InputLabel for="title" value="Title" />
+      <InputLabel for="paintingTitle" value="Title" />
       <TextInput
-          id="title"
+          id="paintingTitle"
           v-model="paintingForm.title"
           type="text"
           class="mt-1 block w-full"
           required
           autofocus
-          autocomplete="title"
+          autocomplete="paintingTitle"
       />
       <InputError class="mt-2" :message="paintingForm.errors.title" />
     </div>
 
     <div class="mt-4">
-      <InputLabel for="description" value="Description" />
+      <InputLabel for="paintingDescription" value="Description" />
       <TextInput
-          id="description"
+          id="paintingDescription"
           v-model="paintingForm.description"
           type="text"
           class="mt-1 block w-full"
@@ -79,53 +79,53 @@ const handleModalClose = () => {
     </div>
 
     <div class="mt-4">
-      <InputLabel for="image_url" value="Url Image" />
+      <InputLabel for="paintingImage_url" value="Url Image" />
       <TextInput
-          id="image_url"
+          id="paintingImage_url"
           v-model="paintingForm.image_url"
           type="text"
           class="mt-1 block w-full"
           required
-          autocomplete="username"
+          autocomplete="paintingTitle"
       />
       <InputError class="mt-2" :message="paintingForm.errors.image_url" />
     </div>
 
     <div class="mt-4">
-      <InputLabel for="style" value="Style" />
+      <InputLabel for="paintingStyle" value="Style" />
       <TextInput
-          id="style"
+          id="paintingStyle"
           v-model="paintingForm.style"
           type="text"
           class="mt-1 block w-full"
           required
-          autocomplete="new-style"
+          autocomplete="paintingtyle"
       />
       <InputError class="mt-2" :message="paintingForm.errors.style" />
     </div>
     <div class="mt-4">
-      <InputLabel for="width" value="Width" />
+      <InputLabel for="paintingWidth" value="Width" />
       <TextInput
-          id="width"
+          id="paintingWidth"
           v-model="paintingForm.width"
           type="number"
           class="mt-1 block w-full"
           required
           autofocus
-          autocomplete="width"
+          autocomplete="paintingWidth"
       />
       <InputError class="mt-2" :message="paintingForm.errors.width" />
     </div>
     <div class="mt-4">
-      <InputLabel for="height" value="Height" />
+      <InputLabel for="paintingHeight" value="Height" />
       <TextInput
-          id="height"
+          id="paintingHeight"
           v-model="paintingForm.height"
           type="number"
           class="mt-1 block w-full"
           required
           autofocus
-          autocomplete="height"
+          autocomplete="paintingHeight"
       />
       <InputError class="mt-2" :message="paintingForm.errors.height" />
     </div>
